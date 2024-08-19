@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Gym Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: auto;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            position: relative;
+            padding: 0.25rem 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #ff5a5f;
+            transition: width 0.3s ease-in-out;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+        }
+
+        nav a:hover {
+            color: #ff5a5f;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('gym-background.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 1rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 1s ease-in-out;
+        }
+
+        @keyframes slideInDown {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        @keyframes slideInUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .cta-btn {
+            background: #ff5a5f;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: background 0.3s ease-in-out, transform 0.2s;
+            box-shadow: 0 6px 12px rgba(255, 90, 95, 0.2);
+        }
+
+        .cta-btn:hover {
+            background: #ff1a1f;
+            transform: translateY(-4px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+            text-align: center;
+            background: #fff;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        section:nth-of-type(even) {
+            background: #f4f4f4;
+        }
+
+        .services-container,
+        .membership-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            padding: 0 2rem;
+        }
+
+        .service,
+        .plan {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .service:hover,
+        .plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .service h3,
+        .plan h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #ff5a5f;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .plan span {
+            display: block;
+            margin-top: 1rem;
+            font-size: 1.75rem;
+            color: #ff5a5f;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: auto;
+            width: 100%;
+            max-width: 500px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        form input,
+        form textarea,
+        form select {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        form input:focus,
+        form textarea:focus,
+        form select:focus {
+            border-color: #ff5a5f;
+        }
+
+        form button {
+            padding: 0.75rem;
+            background: #ff5a5f;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, transform 0.2s;
+        }
+
+        form button:hover {
+            background: #ff1a1f;
+            transform: translateY(-4px);
+        }
+
+        /* Footer Styling */
+        footer {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #ff5a5f;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer a:hover {
+            color: #ff1a1f;
+        }
+
+        /* Additional styles for hidden sections */
+        .hidden {
+            display: none;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        table th,
+        table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background: #ff5a5f;
+            color: #fff;
+        }
+
+        table tr:hover {
+            background-color: #f2f2f2;
+        }
+        #diet-plan {
+            padding: 4rem 0;
+            text-align: center;
+            background: #fff;
+        }
+
+        #diet-plan h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .diet-form {
+            margin-bottom: 2rem;
+        }
+
+        .diet-form select {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .diet-plan-details {
+            display: none;
+            margin-top: 2rem;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f4f4f4;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .diet-plan-details h3 {
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            color: #ff5a5f;
+        }
+
+        .diet-plan-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .diet-plan-details ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">H2K Fitness</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Get Fit, Stay Strong</h1>
+        <p>Join us today and start your fitness journey with the best trainers and equipment.</p>
+        <a href="#membership" class="cta-btn">Join Now</a>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service">
+                <h3>Personal Training</h3>
+                <p>Work with certified trainers who will create a personalized workout plan just for you.</p>
+            </div>
+            <div class="service">
+                <h3>Group Classes</h3>
+                <p>Enjoy our range of group classes from yoga to high-intensity interval training.</p>
+            </div>
+            <div class="service">
+                <h3>Nutrition Guidance</h3>
+                <p>Get expert advice on nutrition to complement your workouts and achieve your goals faster.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="membership">
+        <h2>Membership Plans</h2>
+        <div class="membership-container">
+            <div class="plan">
+                <h3>Basic Plan</h3>
+                <p>Access to gym equipment and group classes.</p>
+                <span>$20/month</span>
+            </div>
+            <div class="plan">
+                <h3>Premium Plan</h3>
+                <p>Includes personal training and nutrition guidance.</p>
+                <span>$50/month</span>
+            </div>
+            <div class="plan">
+                <h3>Family Plan</h3>
+                <p>All benefits for up to 4 family members.</p>
+                <span>$80/month</span>
+            </div>
+        </div>
+    </section>
+    <section id="diet-plan">
+        <h2>Diet Plans</h2>
+        <form class="diet-form">
+            <label for="goal">Select Your Goal:</label>
+            <select id="goal" name="goal">
+                <option value="">-- Select --</option>
+                <option value="weight-gain">Weight Gain</option>
+                <option value="weight-loss">Weight Loss</option>
+            </select>
+        </form>
+
+        <div id="weight-gain-plan" class="diet-plan-details">
+            <h3>Weight Gain Diet Plan</h3>
+            <ul>
+                <li>Breakfast: 4 boiled eggs, 2 whole grain toasts, a glass of milk</li>
+                <li>Lunch: Brown rice, grilled chicken, and steamed vegetables</li>
+                <li>Snack: Peanut butter sandwich, a banana</li>
+                <li>Dinner: Whole wheat pasta with meatballs, a side salad</li>
+            </ul>
+        </div>
+
+        <div id="weight-loss-plan" class="diet-plan-details">
+            <h3>Weight Loss Diet Plan</h3>
+            <ul>
+                <li>Breakfast: Smoothie with fruits, spinach, and protein powder</li>
+                <li>Lunch: Grilled salmon, quinoa, and steamed broccoli</li>
+                <li>Snack: Mixed nuts and a green apple</li>
+                <li>Dinner: Grilled chicken salad with a light vinaigrette</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+
+    <footer>
+        <p>&copy; 2024 Your Gym Name. All rights reserved.</p>
+        <p>Designed by Tarun</p>
+    </footer>
+
+</body>
+<script>
+    document.getElementById('goal').addEventListener('change', function () {
+        var weightGainPlan = document.getElementById('weight-gain-plan');
+        var weightLossPlan = document.getElementById('weight-loss-plan');
+
+        weightGainPlan.style.display = 'none';
+        weightLossPlan.style.display = 'none';
+
+        if (this.value === 'weight-gain') {
+            weightGainPlan.style.display = 'block';
+        } else if (this.value === 'weight-loss') {
+            weightLossPlan.style.display = 'block';
+        }
+    });
+</script>
+</html>
